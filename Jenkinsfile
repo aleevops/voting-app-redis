@@ -35,10 +35,14 @@ pipeline {
           }
         }
         stage('Run Tests'){
-          sh 'pytest ./tests/test_sample.py'
+          steps{
+            sh 'pytest ./tests/test_sample.py'
+          }
         }
         stage('Stop Test App'){
-          sh 'docker-compose down'
+          steps{
+              sh 'docker-compose down'
+          }
         }
     }
 }
