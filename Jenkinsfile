@@ -21,6 +21,25 @@ pipeline {
                     cd ..'''
             }
         }
+        stage('Start Test app'){
+          steps{
+            sh './scripts/test_container.sh'  
+          }
+          post{
+            success{
+              echo "App Started successfully"
+            }
+            failure{
+              echo "App failed to start"
+            }
+          }
+        }
+        stage('Run Tests'){
+          sh 'pytest ./tests/test_sample.py'
+        }
+        stage('Stop Test App'){
+          sh 'docker-compose down'
+        }
     }
 }
 
