@@ -1,4 +1,5 @@
 #!/bin/bash
+# Sample script
 count=0
 
 until [ "$started" = true ] || [[ ( "$count" == 3 ) ]]; do
