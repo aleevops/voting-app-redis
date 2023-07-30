@@ -27,6 +27,7 @@ pipeline {
         stage('Start Test app'){
           steps{
             sh 'docker-compose up -d'
+            sh "chmod +x -R ${env.WORKSPACE}"
             sh './scripts/test_container.sh'  
           }
           post{
