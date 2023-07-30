@@ -18,7 +18,6 @@ pipeline {
               sh 'docker images -a'
               sh 'docker build -t jenkins-pipeline .'
               sh 'cd ..'
-              )
             }
         }
     }
