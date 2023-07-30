@@ -15,12 +15,9 @@ pipeline {
             steps {
               sh '''docker images -a
                     cd azure-vote
-                    ls -l
                     docker build -t jenkins-pipeline .
                     docker images -a
                     cd ..
-                    pwd
-                    ls -l
                     '''
             }
         }
@@ -39,16 +36,8 @@ pipeline {
             }
           }
         }
-        stage('Install pyenv'){
-          steps{
-            dir('.'){
-              sh 'python3.10 -m venv ./venv'
-            }    
-          }
-        }
         stage('Run Tests'){
           steps{
-              sh 'ls -l'
               sh 'python3 -m pytest ./tests/test_sample.py'
           }
         }
