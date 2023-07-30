@@ -39,12 +39,18 @@ pipeline {
             }
           }
         }
+        stage('Install pyenv'){
+          steps{
+            dir('.'){
+              sh 'python3.10 -m venv ./venv'
+            }    
+          }
+        }
         stage('Run Tests'){
           steps{
-             withPythonEnv('/usr/bin/python3.10') {
-              sh '''
-                pytest ./tests/test_sample.py
-              '''
+              dir('.'){
+              sh '. ./venv/bin/activate'
+              sh 'pytest ./tests/test_sample.py'
              }      
           }
         }
