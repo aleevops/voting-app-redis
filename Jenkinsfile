@@ -27,7 +27,7 @@ pipeline {
         stage('Start Test app'){
           steps{
             sh 'docker-compose up -d'
-            sh './scripts/test_container.sh'  
+            sh 'sudo ./scripts/test_container.sh'  
           }
           post{
             success{
@@ -40,7 +40,7 @@ pipeline {
         }
         stage('Run Tests'){
           steps{
-            sh 'pytest ./tests/test_sample.py'
+            sh 'sudo pytest ./tests/test_sample.py'
           }
         }
         stage('Stop Test App'){
