@@ -13,11 +13,12 @@ pipeline {
           }
         stage('DockerImages'){
             steps {
-              sh 'docker images -a'
-              sh cd azure-vote
-              sh 'ls -l'
-              sh 'docker build -t jenkins-pipeline .'
-              sh 'cd ..'
+              sh '''docker images -a
+                    cd azure-vote
+                    ls -l
+                    docker build -t jenkins-pipeline .
+                    docker images -a
+                    cd ..'''
             }
         }
     }
