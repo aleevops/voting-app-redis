@@ -20,6 +20,7 @@ pipeline {
                     docker images -a
                     cd ..
                     pwd
+                    ls -l
                     '''
             }
         }
