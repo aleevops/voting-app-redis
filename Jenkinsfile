@@ -41,7 +41,11 @@ pipeline {
         }
         stage('Run Tests'){
           steps{
-            sh 'pytest ./tests/test_sample.py'
+             withPythonEnv('/usr/bin/python3.10') {
+              sh '''
+                pytest ./tests/test_sample.py
+              '''
+             }      
           }
         }
         stage('Stop Test App'){
