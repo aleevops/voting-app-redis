@@ -6,6 +6,11 @@ pipeline {
                 echo "$GIT_BRANCH"
             }
         }
+        stage('Git checkout'){
+            steps{
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/aleevops/voting-app-redis.git']])
+              }
+          }
         stage('DockerImages'){
             steps {
               pwsh(script: 'docker images -a')
