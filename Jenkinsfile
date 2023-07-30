@@ -18,7 +18,9 @@ pipeline {
                     ls -l
                     docker build -t jenkins-pipeline .
                     docker images -a
-                    cd ..'''
+                    cd ..
+                    pwd
+                    '''
             }
         }
         stage('Start Test app'){
