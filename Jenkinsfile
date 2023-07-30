@@ -51,6 +51,7 @@ pipeline {
               dir('.'){
               sh '. ./venv/bin/activate'
               sh 'pip install pytest'
+              sh 'ls -l'
               sh 'pytest ./tests/test_sample.py'
              }      
           }
