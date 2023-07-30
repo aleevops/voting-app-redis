@@ -62,7 +62,7 @@ pipeline {
         stage('Run Trivy'){
           steps{
             sh(script:'''
-              trivy aleevops/votingapp:latest
+              trivy image aleevops/votingapp:latest
             ''')
           }
         }
