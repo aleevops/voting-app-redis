@@ -26,6 +26,7 @@ pipeline {
         }
         stage('Start Test app'){
           steps{
+            sh 'docker-compose up -d'
             sh './scripts/test_container.sh'  
           }
           post{
