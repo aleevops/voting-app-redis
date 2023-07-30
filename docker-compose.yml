@@ -2,15 +2,15 @@ version: '3'
 services:
   azure-vote-back:
     image: redis
-    container_name: azure-vote-back
+    container_name: vote-back
     ports:
         - "6379:6379"
 
   azure-vote-front:
     build: ./azure-vote
-    image: azure-vote-front
-    container_name: azure-vote-front
+    image: vote-front
+    container_name: vote-front
     environment:
-      REDIS: azure-vote-back
+      REDIS: vote-back
     ports:
         - "8000:80"

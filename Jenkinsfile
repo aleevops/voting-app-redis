@@ -46,6 +46,19 @@ pipeline {
               sh 'docker-compose down'
           }
         }
+        stage('PushContainer'){
+          steps{
+            echo 'Workspace is $WORKSPACE'
+            dir("$WORKSPACE/azure-vote"){
+              script{
+                withDockerRegistry(credentialsId: 'Docker') {
+                  def image = docker.build('aleevops/votingapp:latest')
+                  image.push()
+                }
+              }
+            }
+          }
+        }
     }
 }
 
